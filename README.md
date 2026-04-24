@@ -37,4 +37,10 @@ It is intentionally framework-light (HTML, CSS, JavaScript) so it can be quickly
 3. Open `index.html` directly in your browser.
 
 No build step is required for this version.
+
+## Railway Deployment
+
+- Railway uses `package.json` and runs `npm start`.
+- App serves on port `8080` using `serve`.
+- `railway.json` includes start command, healthcheck path, and restart policy.
   

@@ -1,0 +1,15 @@
+{
+  "name": "solution360-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static startup portfolio website for Solution360.",
+  "scripts": {
+    "start": "serve -s . -l 8080"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
