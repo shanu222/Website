@@ -15,6 +15,8 @@ html {
 body {
   margin: 0;
   font-family: "Inter", system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 .nav-link {
@@ -40,6 +42,47 @@ body {
 }
 
 .nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.btn-premium::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.35), transparent 58%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.btn-premium:hover::after {
+  opacity: 1;
+}
+
+.link-slide {
+  position: relative;
+}
+
+.link-slide::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(103, 232, 249, 0.95), rgba(59, 130, 246, 0.9));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.22s ease;
+}
+
+.link-slide:hover::after {
   transform: scaleX(1);
   transform-origin: left;
 }

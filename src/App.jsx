@@ -53,16 +53,19 @@ const productCards = [
     title: "Energy Intelligence Platform",
     description: "Optimize renewable performance, demand planning, and reporting in one control layer.",
     icon: ChartNoAxesCombined,
+    status: "Live",
   },
   {
     title: "Sustainability Reporting Suite",
     description: "Automate ESG data collection, validation, and compliance-ready outputs for leadership.",
     icon: Layers3,
+    status: "Live",
   },
   {
     title: "Resilience Response Console",
     description: "Monitor high-risk operations with unified response workflows and alert intelligence.",
     icon: ShieldCheck,
+    status: "Coming Soon",
   },
 ];
 
@@ -91,8 +94,11 @@ function App() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
+  const [heroMouse, setHeroMouse] = useState({ x: 0, y: 0 });
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 400], [0, -30]);
+  const sectionY = useTransform(scrollY, [0, 1200], [0, -20]);
+  const heroParallaxX = useTransform(scrollY, [0, 600], [0, 8]);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -137,40 +143,65 @@ function App() {
     setFormState({ name: "", email: "", message: "" });
   };
 
+  const handleHeroMouseMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    setHeroMouse({ x, y });
+  };
+
+  const heroWords = "360 degree technology for climate, energy, and resilience outcomes.".split(" ");
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(37,99,235,0.28),transparent_38%),radial-gradient(circle_at_82%_10%,rgba(8,145,178,0.2),transparent_34%),linear-gradient(180deg,#020617_0%,#0b1120_58%,#020617_100%)]" />
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(37,99,235,0.32),transparent_36%),radial-gradient(circle_at_82%_10%,rgba(8,145,178,0.24),transparent_34%),linear-gradient(180deg,#020617_0%,#0b1120_50%,#020617_100%)]" />
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} onNavigate={scrollToSection} />
 
       <main className="mx-auto max-w-6xl px-4 pt-20 sm:px-6 lg:px-8">
-        <section id="top" className="grid items-center gap-10 py-14 lg:grid-cols-2">
+        <section id="top" className="relative grid items-center gap-10 overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.02] px-4 py-14 backdrop-blur-sm lg:grid-cols-2 lg:px-8">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_12%,rgba(56,189,248,0.2),transparent_35%),linear-gradient(110deg,rgba(59,130,246,0.11),rgba(15,23,42,0))]" />
+          {[0, 1, 2, 3].map((particle) => (
+            <motion.span
+              key={particle}
+              aria-hidden="true"
+              className="pointer-events-none absolute h-1.5 w-1.5 rounded-full bg-cyan-300/70"
+              style={{ left: `${18 + particle * 20}%`, top: `${20 + (particle % 2) * 30}%`, willChange: "transform, opacity" }}
+              animate={{ y: [0, -14, 0], opacity: [0.4, 1, 0.4] }}
+              transition={{ duration: 3.8 + particle, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+            />
+          ))}
           <motion.div {...fadeInUp}>
             <p className="inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-300/10 px-4 py-1 text-sm text-cyan-200">
               <Sparkles size={14} />
               AI-Powered Sustainability Intelligence
             </p>
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: "easeOut" }}
-              className="mt-5 text-4xl font-semibold leading-tight text-white md:text-5xl"
-            >
-              360 degree technology for climate, energy, and resilience outcomes.
+            <motion.h1 className="mt-5 text-4xl font-bold leading-[1.08] tracking-tight text-white md:text-6xl">
+              {heroWords.map((word, index) => (
+                <motion.span
+                  key={`${word}-${index}`}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, ease: "easeOut", delay: index * 0.03 }}
+                  className="mr-2 inline-block"
+                >
+                  {word}
+                </motion.span>
+              ))}
             </motion.h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-300">
+            <p className="mt-5 max-w-xl text-base leading-7 text-slate-300">
               We design premium enterprise software products that turn operations into measurable impact with
               clear reporting, modern UX, and intelligent automation.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <button
                 onClick={() => scrollToSection("products")}
-                className="rounded-xl bg-brand-gradient px-6 py-3 font-medium text-white shadow-glow transition duration-200 hover:scale-[1.03]"
+                className="btn-premium rounded-xl bg-brand-gradient px-6 py-3 font-medium text-white shadow-glow transition duration-200 hover:scale-[1.03]"
               >
                 Explore Products
               </button>
               <button
                 onClick={() => scrollToSection("contact")}
-                className="rounded-xl border border-white/20 bg-white/5 px-6 py-3 font-medium text-slate-100 backdrop-blur transition hover:border-cyan-300/60 hover:bg-cyan-300/10"
+                className="btn-premium rounded-xl border border-white/20 bg-white/5 px-6 py-3 font-medium text-slate-100 backdrop-blur transition hover:border-cyan-300/60 hover:bg-cyan-300/10"
               >
                 Contact Team
               </button>
@@ -194,10 +225,21 @@ function App() {
             </motion.div>
           </motion.div>
 
-          <motion.div style={{ y: heroY }} className="relative">
+          <motion.div
+            onMouseMove={handleHeroMouseMove}
+            onMouseLeave={() => setHeroMouse({ x: 0, y: 0 })}
+            style={{ y: heroY }}
+            className="relative"
+          >
             <motion.div
               animate={{ y: [-8, 8, -8] }}
               transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+              style={{
+                x: heroParallaxX,
+                rotateY: heroMouse.x * 8,
+                rotateX: heroMouse.y * -8,
+                willChange: "transform",
+              }}
               className="rounded-3xl border border-cyan-300/20 bg-white/5 p-3 shadow-glow backdrop-blur-xl"
             >
               <img
@@ -211,7 +253,7 @@ function App() {
         </section>
 
         <SectionHeading id="about" eyebrow="WHO WE ARE" title="Built for product clarity, outcomes, and long-term trust." />
-        <motion.section {...fadeInUp} className="grid gap-8 rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:grid-cols-2 md:p-10">
+        <motion.section {...fadeInUp} style={{ y: sectionY }} className="grid gap-8 rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-white/[0.02] p-6 shadow-[0_16px_40px_rgba(2,6,23,0.35)] md:grid-cols-2 md:p-10">
           <div className="space-y-4 text-slate-300">
             <p>
               Solution360 helps governments, enterprises, and NGOs modernize sustainability and resilience operations
@@ -251,12 +293,19 @@ function App() {
               <motion.article
                 key={card.title}
                 variants={staggerItem}
-                whileHover={{ y: -8, scale: 1.03 }}
+                whileHover={{ y: -8, scale: 1.03, rotateX: 2.2, rotateY: -2.2 }}
                 transition={{ duration: 0.45, ease: "easeOut" }}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-cyan-300/60 hover:shadow-glow"
+                style={{ willChange: "transform" }}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-slate-900/30 p-6 transition hover:border-cyan-300/60 hover:shadow-glow"
               >
                 <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-blue-400 via-cyan-300 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
+                <div className="mb-4 inline-flex items-center gap-2">
+                  <span className={`rounded-full px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] ${card.status === "Live" ? "bg-emerald-300/20 text-emerald-200" : "bg-amber-300/20 text-amber-100"}`}>
+                    {card.status}
+                  </span>
+                </div>
                 <card.icon className="text-cyan-300" size={20} />
+                <div className="mt-4 h-16 rounded-xl border border-white/10 bg-[linear-gradient(130deg,rgba(56,189,248,0.15),rgba(37,99,235,0.08),rgba(15,23,42,0.45))]" />
                 <h3 className="mt-4 text-xl font-semibold text-white">{card.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-300">{card.description}</p>
                 <button
@@ -294,7 +343,7 @@ function App() {
           </motion.div>
         </section>
 
-        <section className="rounded-3xl border border-white/10 bg-slate-900/45 py-10">
+        <section className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900/60 to-blue-950/30 py-10 shadow-[0_20px_50px_rgba(2,6,23,0.3)]">
           <SectionHeading eyebrow="WHY CHOOSE US" title="Product quality that meets business reality." />
           <motion.div
             variants={staggerContainer}
@@ -332,7 +381,10 @@ function App() {
                 transition={{ duration: 0.4 }}
                 className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-slate-200"
               >
-                <item.icon size={18} className="text-cyan-300" />
+                <div className="flex items-center justify-between">
+                  <item.icon size={18} className="text-cyan-300" />
+                  <CheckCircle2 size={16} className="text-cyan-200/80" />
+                </div>
                 <h3 className="mt-3 text-lg font-semibold text-white">{item.title}</h3>
                 <p className="mt-2 text-sm text-slate-300">{item.desc}</p>
               </motion.div>
@@ -364,6 +416,12 @@ function App() {
         >
           <motion.div
             aria-hidden="true"
+            animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+            transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+            className="absolute inset-0 opacity-40 [background:linear-gradient(120deg,rgba(255,255,255,0.25),rgba(255,255,255,0.04),rgba(103,232,249,0.18))] [background-size:200%_200%]"
+          />
+          <motion.div
+            aria-hidden="true"
             animate={{ x: ["-10%", "8%", "-10%"], opacity: [0.35, 0.5, 0.35] }}
             transition={{ duration: 7, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
             className="pointer-events-none absolute -top-10 left-0 h-40 w-40 rounded-full bg-cyan-200/40 blur-3xl"
@@ -374,7 +432,8 @@ function App() {
             transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
             className="pointer-events-none absolute bottom-0 right-0 h-44 w-44 rounded-full bg-blue-200/40 blur-3xl"
           />
-          <h2 className="relative text-3xl font-semibold md:text-4xl">Built for growth and funding readiness.</h2>
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-100/15 blur-3xl" />
+          <h2 className="relative text-3xl font-bold tracking-tight md:text-5xl">Turn technical execution into investor confidence.</h2>
           <p className="relative mt-3 max-w-2xl text-sm text-white/90 md:text-base">
             Position your platform with a premium story, clear product value, and execution quality that builds trust
             from customers to investors.
@@ -382,16 +441,16 @@ function App() {
           <div className="relative mt-6 flex flex-wrap gap-4">
             <button
               onClick={() => scrollToSection("contact")}
-              className="rounded-xl bg-white px-6 py-3 font-semibold text-blue-700 transition duration-200 hover:scale-[1.03] hover:shadow-[0_16px_40px_rgba(255,255,255,0.35)]"
+              className="btn-premium rounded-xl bg-white px-6 py-3 font-semibold text-blue-700 transition duration-200 hover:scale-[1.03] hover:shadow-[0_16px_40px_rgba(255,255,255,0.35)]"
             >
               Schedule Intro Call
             </button>
           </div>
-          <p className="relative mt-4 text-sm text-cyan-100">Built for investors, startups, and enterprises.</p>
+          <p className="relative mt-4 text-sm text-cyan-100">Early-stage access for partners and investors.</p>
         </motion.section>
 
         <motion.section id="contact" {...fadeInUp} className="grid gap-6 pb-12 md:grid-cols-2">
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-slate-900/40 p-6 shadow-[0_16px_42px_rgba(2,6,23,0.36)]">
             <p className="text-xs uppercase tracking-[0.2em] text-cyan-200">Contact</p>
             <h3 className="mt-3 text-2xl font-semibold text-white">Talk to the founder</h3>
             <p className="mt-3 text-sm leading-relaxed text-slate-300">
@@ -401,14 +460,14 @@ function App() {
             <div className="mt-6 space-y-3 text-sm text-slate-200">
               <a
                 href="mailto:shanu1998end@gmail.com"
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 transition hover:border-cyan-300/50 hover:bg-cyan-300/10"
+                className="link-slide flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 transition hover:border-cyan-300/50 hover:bg-cyan-300/10"
               >
                 <Mail size={16} className="text-cyan-300" />
                 shanu1998end@gmail.com
               </a>
               <a
                 href="tel:+923403318127"
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 transition hover:border-cyan-300/50 hover:bg-cyan-300/10"
+                className="link-slide flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 transition hover:border-cyan-300/50 hover:bg-cyan-300/10"
               >
                 <Phone size={16} className="text-cyan-300" />
                 +92 340 3318127
@@ -417,7 +476,7 @@ function App() {
                 href="https://www.linkedin.com/in/shahnawaz-2b9025130"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 transition hover:border-cyan-300/50 hover:bg-cyan-300/10"
+                className="link-slide flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 transition hover:border-cyan-300/50 hover:bg-cyan-300/10"
               >
                 <Globe size={16} className="text-cyan-300" />
                 Founder LinkedIn
@@ -426,7 +485,7 @@ function App() {
                 href="https://github.com/shanu222"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 transition hover:border-cyan-300/50 hover:bg-cyan-300/10"
+                className="link-slide flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 transition hover:border-cyan-300/50 hover:bg-cyan-300/10"
               >
                 <Globe size={16} className="text-cyan-300" />
                 github.com/shanu222
@@ -434,40 +493,62 @@ function App() {
             </div>
           </div>
 
-          <form onSubmit={handleContactSubmit} className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+          <form onSubmit={handleContactSubmit} className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-slate-900/40 p-6 shadow-[0_16px_42px_rgba(2,6,23,0.36)]">
             <h3 className="text-xl font-semibold text-white">Send a message</h3>
             <p className="mt-2 text-sm text-slate-300">We usually respond within 24 hours.</p>
             <div className="mt-5 space-y-4">
-              <input
-                name="name"
-                value={formState.name}
-                onChange={handleFormChange}
-                placeholder="Your name"
-                className="w-full rounded-xl border border-white/15 bg-slate-900/60 px-4 py-3 text-sm text-white placeholder:text-slate-400 outline-none transition focus:border-cyan-300/70 focus:shadow-[0_0_0_4px_rgba(103,232,249,0.18)]"
-              />
-              <input
-                type="email"
-                name="email"
-                value={formState.email}
-                onChange={handleFormChange}
-                placeholder="Work email"
-                className="w-full rounded-xl border border-white/15 bg-slate-900/60 px-4 py-3 text-sm text-white placeholder:text-slate-400 outline-none transition focus:border-cyan-300/70 focus:shadow-[0_0_0_4px_rgba(103,232,249,0.18)]"
-              />
-              <textarea
-                name="message"
-                rows={5}
-                value={formState.message}
-                onChange={handleFormChange}
-                placeholder="Tell us about your project"
-                className="w-full rounded-xl border border-white/15 bg-slate-900/60 px-4 py-3 text-sm text-white placeholder:text-slate-400 outline-none transition focus:border-cyan-300/70 focus:shadow-[0_0_0_4px_rgba(103,232,249,0.18)]"
-              />
+              <label className="relative block">
+                <input
+                  name="name"
+                  value={formState.name}
+                  onChange={handleFormChange}
+                  placeholder=" "
+                  className="peer w-full rounded-xl border border-white/15 bg-slate-900/60 px-4 pb-2 pt-5 text-sm text-white outline-none transition focus:border-cyan-300/70 focus:shadow-[0_0_0_4px_rgba(103,232,249,0.18)]"
+                />
+                <span className="pointer-events-none absolute left-4 top-4 text-sm text-slate-400 transition-all peer-focus:top-2 peer-focus:text-xs peer-focus:text-cyan-200 peer-[&:not(:placeholder-shown)]:top-2 peer-[&:not(:placeholder-shown)]:text-xs">
+                  Your name
+                </span>
+              </label>
+              <label className="relative block">
+                <input
+                  type="email"
+                  name="email"
+                  value={formState.email}
+                  onChange={handleFormChange}
+                  placeholder=" "
+                  className="peer w-full rounded-xl border border-white/15 bg-slate-900/60 px-4 pb-2 pt-5 text-sm text-white outline-none transition focus:border-cyan-300/70 focus:shadow-[0_0_0_4px_rgba(103,232,249,0.18)]"
+                />
+                <span className="pointer-events-none absolute left-4 top-4 text-sm text-slate-400 transition-all peer-focus:top-2 peer-focus:text-xs peer-focus:text-cyan-200 peer-[&:not(:placeholder-shown)]:top-2 peer-[&:not(:placeholder-shown)]:text-xs">
+                  Work email
+                </span>
+              </label>
+              <label className="relative block">
+                <textarea
+                  name="message"
+                  rows={5}
+                  value={formState.message}
+                  onChange={handleFormChange}
+                  placeholder=" "
+                  className="peer w-full rounded-xl border border-white/15 bg-slate-900/60 px-4 pb-2 pt-5 text-sm text-white outline-none transition focus:border-cyan-300/70 focus:shadow-[0_0_0_4px_rgba(103,232,249,0.18)]"
+                />
+                <span className="pointer-events-none absolute left-4 top-4 text-sm text-slate-400 transition-all peer-focus:top-2 peer-focus:text-xs peer-focus:text-cyan-200 peer-[&:not(:placeholder-shown)]:top-2 peer-[&:not(:placeholder-shown)]:text-xs">
+                  Tell us about your project
+                </span>
+              </label>
             </div>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow transition duration-200 hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-80"
+              className="btn-premium mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow transition duration-200 hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-80"
             >
-              {isSubmitting ? "Sending..." : "Send Message"}
+              {isSubmitting ? (
+                <span className="inline-flex items-center gap-2">
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+                  Sending...
+                </span>
+              ) : (
+                "Send Message"
+              )}
             </button>
             <p className={`mt-3 text-sm ${submitMessage.includes("Please") ? "text-rose-300" : "text-cyan-200"}`}>
               {submitMessage}
@@ -486,23 +567,23 @@ function App() {
           <div>
             <p className="font-medium text-slate-200">Product</p>
             <ul className="mt-3 space-y-2 text-slate-400">
-              <li><button onClick={() => scrollToSection("products")} className="transition hover:text-cyan-200">Product Suite</button></li>
-              <li><button onClick={() => scrollToSection("how-it-works")} className="transition hover:text-cyan-200">How It Works</button></li>
+              <li><button onClick={() => scrollToSection("products")} className="link-slide transition hover:text-cyan-200">Product Suite</button></li>
+              <li><button onClick={() => scrollToSection("how-it-works")} className="link-slide transition hover:text-cyan-200">How It Works</button></li>
             </ul>
           </div>
           <div>
             <p className="font-medium text-slate-200">Company</p>
             <ul className="mt-3 space-y-2 text-slate-400">
-              <li><button onClick={() => scrollToSection("about")} className="transition hover:text-cyan-200">Who We Are</button></li>
-              <li><button onClick={() => scrollToSection("contact")} className="transition hover:text-cyan-200">Contact</button></li>
+              <li><button onClick={() => scrollToSection("about")} className="link-slide transition hover:text-cyan-200">Who We Are</button></li>
+              <li><button onClick={() => scrollToSection("contact")} className="link-slide transition hover:text-cyan-200">Contact</button></li>
             </ul>
           </div>
           <div>
             <p className="font-medium text-slate-200">Social</p>
             <ul className="mt-3 space-y-2 text-slate-400">
-              <li><a href="mailto:shanu1998end@gmail.com" className="transition hover:text-cyan-200">Email</a></li>
-              <li><a href="https://github.com/shanu222" target="_blank" rel="noreferrer" className="transition hover:text-cyan-200">GitHub</a></li>
-              <li><a href="https://www.linkedin.com/in/solutions-three-sixty-degree-a32913405/" target="_blank" rel="noreferrer" className="transition hover:text-cyan-200">LinkedIn</a></li>
+              <li><a href="mailto:shanu1998end@gmail.com" className="link-slide transition hover:text-cyan-200">Email</a></li>
+              <li><a href="https://github.com/shanu222" target="_blank" rel="noreferrer" className="link-slide transition hover:text-cyan-200">GitHub</a></li>
+              <li><a href="https://www.linkedin.com/in/solutions-three-sixty-degree-a32913405/" target="_blank" rel="noreferrer" className="link-slide transition hover:text-cyan-200">LinkedIn</a></li>
             </ul>
           </div>
         </div>
