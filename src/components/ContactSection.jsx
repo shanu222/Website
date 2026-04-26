@@ -44,13 +44,13 @@ function ContactSection() {
   };
 
   return (
-    <motion.section id="contact" {...fadeInUp} className="scroll-mt-24 py-6">
+    <motion.section id="contact" {...fadeInUp} className="scroll-mt-24 w-full py-2">
       <p className="text-xs uppercase tracking-[0.2em] text-cyan-700 transition-colors duration-300 dark:text-cyan-200">Contact</p>
-      <h2 className="mt-2 text-2xl font-semibold text-slate-900 transition-colors duration-300 dark:text-white md:text-3xl">Talk to our team</h2>
-      <div className="mt-6 grid gap-6 md:grid-cols-2">
+      <h2 className="mt-2 text-[clamp(28px,5vw,48px)] font-semibold text-slate-900 transition-colors duration-300 dark:text-white">Talk to our team</h2>
+      <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5">
         <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-colors duration-300 dark:border-slate-700 dark:bg-slate-800 dark:shadow-[0_16px_42px_rgba(2,6,23,0.36)]">
           <h3 className="text-2xl font-semibold text-slate-900 transition-colors duration-300 dark:text-white">Talk to the founder</h3>
-          <p className="mt-3 text-sm leading-relaxed text-slate-600 transition-colors duration-300 dark:text-slate-300">
+          <p className="mt-3 text-[clamp(14px,2vw,18px)] leading-relaxed text-slate-600 transition-colors duration-300 dark:text-slate-300">
             Interested in partnerships, pilot programs, or investment discussions? Reach out directly and we can schedule a focused intro.
           </p>
           <div className="mt-6 space-y-3 text-sm text-slate-700 transition-colors duration-300 dark:text-slate-200">
@@ -96,7 +96,7 @@ function ContactSection() {
               </span>
             </label>
           </div>
-          <button type="submit" disabled={isSubmitting} className="btn-premium mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow transition duration-200 hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-80">
+          <button type="submit" disabled={isSubmitting} className="btn-premium mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow transition duration-200 hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-80">
             {isSubmitting ? (
               <span className="inline-flex items-center gap-2">
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />

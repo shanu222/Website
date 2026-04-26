@@ -2,9 +2,11 @@ import ContactSection from "../components/ContactSection";
 
 function Contact() {
   return (
-    <div className="space-y-8">
-      <ContactSection />
-    </div>
+    <section className="w-full px-6 py-[60px]">
+      <div className="mx-auto w-full max-w-7xl">
+        <ContactSection />
+      </div>
+    </section>
   );
 }
 

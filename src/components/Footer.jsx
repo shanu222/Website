@@ -2,7 +2,7 @@ function Footer({ year, onNavigate }) {
   return (
     <footer className="relative border-t border-slate-200 bg-white/95 transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/95">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent dark:via-cyan-300/70" />
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-8 text-sm sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
+      <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 py-10 text-sm sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <p className="text-base font-semibold text-slate-900 transition-colors duration-300 dark:text-white">SustainableSolution360</p>
           <p className="mt-2 text-slate-600 transition-colors duration-300 dark:text-slate-400">Premium climate-tech products designed for growth.</p>
@@ -30,7 +30,7 @@ function Footer({ year, onNavigate }) {
           </ul>
         </div>
       </div>
-      <div className="mx-auto max-w-6xl px-4 pb-6 text-xs text-slate-500 transition-colors duration-300 dark:text-slate-500 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-7xl px-6 pb-8 text-xs text-slate-500 transition-colors duration-300 dark:text-slate-500">
         © {year} SustainableSolution360. All rights reserved.
       </div>
     </footer>

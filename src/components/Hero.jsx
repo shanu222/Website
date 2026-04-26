@@ -41,7 +41,7 @@ function Hero({ onNavigate }) {
   };
 
   return (
-    <section id="top" className="relative grid items-center gap-10 overflow-hidden rounded-[28px] border border-slate-200 bg-gradient-to-br from-blue-50/95 via-white to-sky-50 px-4 py-14 shadow-[0_10px_30px_rgba(148,163,184,0.18)] transition-colors duration-300 dark:border-white/10 dark:bg-slate-900/40 dark:shadow-none lg:grid-cols-2 lg:px-8">
+    <section id="top" className="relative grid w-full items-center gap-5 overflow-hidden rounded-[28px] border border-slate-200 bg-gradient-to-br from-blue-50/95 via-white to-sky-50 px-6 py-12 shadow-[0_10px_30px_rgba(148,163,184,0.18)] transition-colors duration-300 dark:border-white/10 dark:bg-slate-900/40 dark:shadow-none md:gap-8 lg:grid-cols-2 lg:gap-10 lg:py-16">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_12%,rgba(59,130,246,0.22),transparent_38%),linear-gradient(110deg,rgba(37,99,235,0.1),rgba(255,255,255,0))] transition-colors duration-300 dark:bg-[radial-gradient(circle_at_20%_12%,rgba(56,189,248,0.2),transparent_35%),linear-gradient(110deg,rgba(59,130,246,0.11),rgba(15,23,42,0))]" />
       {[0, 1, 2, 3].map((particle) => (
         <motion.span
@@ -58,7 +58,7 @@ function Hero({ onNavigate }) {
           <Sparkles size={14} />
           AI-Powered Sustainability Intelligence
         </p>
-        <motion.h1 className="mt-5 text-4xl font-bold leading-[1.08] tracking-tight text-slate-900 transition-colors duration-300 dark:text-white md:text-6xl">
+        <motion.h1 className="mt-5 text-[clamp(28px,5vw,48px)] font-bold leading-[1.08] tracking-tight text-slate-900 transition-colors duration-300 dark:text-white">
           {heroWords.map((word, index) => (
             <motion.span
               key={`${word}-${index}`}
@@ -71,24 +71,24 @@ function Hero({ onNavigate }) {
             </motion.span>
           ))}
         </motion.h1>
-        <p className="mt-5 max-w-xl text-base leading-7 text-slate-600 transition-colors duration-300 dark:text-slate-300">
+        <p className="mt-5 max-w-2xl text-[clamp(14px,2vw,18px)] leading-7 text-slate-600 transition-colors duration-300 dark:text-slate-300">
           We design premium enterprise software products that turn operations into measurable impact with clear reporting, modern UX, and intelligent automation.
         </p>
-        <div className="mt-8 flex flex-wrap gap-4">
+        <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
           <button
             onClick={() => onNavigate("/products")}
-            className="btn-premium rounded-xl bg-brand-gradient px-6 py-3 font-medium text-white shadow-glow transition duration-200 hover:scale-[1.03]"
+            className="btn-premium w-full rounded-xl bg-brand-gradient px-6 py-3 font-medium text-white shadow-glow transition duration-200 hover:scale-[1.03] sm:w-auto"
           >
             Explore Products
           </button>
           <button
             onClick={() => onNavigate("/contact")}
-            className="btn-premium rounded-xl border border-slate-300 bg-white px-6 py-3 font-medium text-slate-700 transition duration-300 hover:border-cyan-400 hover:bg-cyan-50 dark:border-white/20 dark:bg-white/5 dark:text-slate-100 dark:backdrop-blur dark:hover:border-cyan-300/60 dark:hover:bg-cyan-300/10"
+            className="btn-premium w-full rounded-xl border border-slate-300 bg-white px-6 py-3 font-medium text-slate-700 transition duration-300 hover:border-cyan-400 hover:bg-cyan-50 dark:border-white/20 dark:bg-white/5 dark:text-slate-100 dark:backdrop-blur dark:hover:border-cyan-300/60 dark:hover:bg-cyan-300/10 sm:w-auto"
           >
             Contact Team
           </button>
         </div>
-        <motion.div variants={staggerContainer} initial="hidden" animate="show" className="mt-8 grid gap-3 sm:grid-cols-3">
+        <motion.div variants={staggerContainer} initial="hidden" animate="show" className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5">
           {trustStats.map((item) => (
             <motion.div key={item.title} variants={staggerItem} className="rounded-2xl border border-slate-200 bg-white/90 p-4 shadow-sm transition-colors duration-300 dark:border-white/10 dark:bg-white/[0.04] dark:backdrop-blur">
               <p className="text-sm font-semibold text-cyan-700 transition-colors duration-300 dark:text-cyan-200">{item.title}</p>

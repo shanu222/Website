@@ -2,9 +2,11 @@ import AboutSection from "../components/AboutSection";
 
 function About() {
   return (
-    <div className="space-y-8">
-      <AboutSection />
-    </div>
+    <section className="w-full px-6 py-[60px]">
+      <div className="mx-auto w-full max-w-7xl">
+        <AboutSection />
+      </div>
+    </section>
   );
 }
 

@@ -132,11 +132,11 @@ const itemFade = {
 
 function ApplicationsSection() {
   return (
-    <section id="applications" className="py-10">
+    <section id="applications" className="w-full py-2">
       <motion.div {...sectionFade} className="mb-6">
         <p className="text-xs uppercase tracking-[0.2em] text-cyan-700 transition-colors duration-300 dark:text-cyan-200">Our Applications</p>
-        <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 transition-colors duration-300 dark:text-white md:text-3xl">Our Applications</h2>
-        <p className="mt-2 max-w-2xl text-sm text-slate-600 transition-colors duration-300 dark:text-slate-300 md:text-base">
+        <h2 className="mt-2 text-[clamp(28px,5vw,48px)] font-bold tracking-tight text-slate-900 transition-colors duration-300 dark:text-white">Our Applications</h2>
+        <p className="mt-2 max-w-3xl text-[clamp(14px,2vw,18px)] text-slate-600 transition-colors duration-300 dark:text-slate-300">
           Explore our growing ecosystem of AI-powered platforms.
         </p>
         <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-cyan-300/60 bg-cyan-100/80 px-4 py-1.5 text-xs font-semibold tracking-[0.14em] text-cyan-700 transition-colors duration-300 dark:border-cyan-300/35 dark:bg-cyan-300/10 dark:text-cyan-100">
@@ -165,7 +165,7 @@ function ApplicationsSection() {
             </div>
             {category.subtitle && <p className="mb-4 text-sm text-slate-600 transition-colors duration-300 dark:text-slate-200/90">{category.subtitle}</p>}
 
-            <motion.div variants={cardStagger} className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <motion.div variants={cardStagger} className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5">
               {category.apps.map((app) => (
                 <motion.article
                   key={app.name}

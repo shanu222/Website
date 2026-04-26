@@ -35,11 +35,11 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 transition-colors duration-300 dark:bg-slate-900 dark:text-gray-100">
+    <div className="min-h-screen overflow-x-hidden bg-white text-gray-900 transition-colors duration-300 dark:bg-slate-900 dark:text-gray-100">
       <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(147,197,253,0.35),transparent_42%),radial-gradient(circle_at_82%_10%,rgba(186,230,253,0.24),transparent_34%),linear-gradient(180deg,#f8fbff_0%,#eff6ff_55%,#ffffff_100%)] transition-colors duration-300 dark:bg-[radial-gradient(circle_at_15%_20%,rgba(37,99,235,0.32),transparent_36%),radial-gradient(circle_at_82%_10%,rgba(8,145,178,0.24),transparent_34%),linear-gradient(180deg,#020617_0%,#0b1120_50%,#020617_100%)]" />
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} onNavigate={routeTo} theme={theme} onToggleTheme={toggleTheme} />
 
-      <main className="mx-auto max-w-6xl px-4 pb-12 pt-20 sm:px-6 lg:px-8">
+      <main className="w-full pb-16 pt-20">
         <AnimatePresence mode="wait">
           <motion.div key={location.pathname} initial={pageTransition.initial} animate={pageTransition.animate} exit={pageTransition.exit} transition={pageTransition.transition}>
             <Routes location={location}>

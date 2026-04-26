@@ -20,15 +20,15 @@ const staggerItem = {
 
 function HowItWorks() {
   return (
-    <section id="how-it-works" className="scroll-mt-24 py-6">
+    <section id="how-it-works" className="scroll-mt-24 w-full py-2">
       <p className="text-xs uppercase tracking-[0.2em] text-cyan-700 transition-colors duration-300 dark:text-cyan-200">How It Works</p>
-      <h2 className="mt-2 text-2xl font-semibold text-slate-900 transition-colors duration-300 dark:text-white md:text-3xl">A clear four-step delivery process.</h2>
+      <h2 className="mt-2 text-[clamp(28px,5vw,48px)] font-semibold text-slate-900 transition-colors duration-300 dark:text-white">A clear four-step delivery process.</h2>
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-4"
+        className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5"
       >
         {steps.map((step, index) => (
           <motion.div key={step.title} variants={staggerItem} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-colors duration-300 dark:border-slate-700 dark:bg-slate-800">

@@ -10,11 +10,11 @@ const fadeInUp = {
 
 function AboutSection() {
   return (
-    <section id="about" className="scroll-mt-24 py-6">
+    <section id="about" className="scroll-mt-24 w-full py-2">
       <p className="text-xs uppercase tracking-[0.2em] text-cyan-700 transition-colors duration-300 dark:text-cyan-200">Who We Are</p>
-      <h2 className="mt-2 text-2xl font-semibold text-slate-900 transition-colors duration-300 dark:text-white md:text-3xl">Mission-driven product team for sustainability outcomes.</h2>
-      <motion.div {...fadeInUp} className="mt-6 grid gap-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_16px_36px_rgba(148,163,184,0.22)] transition-colors duration-300 dark:border-white/10 dark:bg-gradient-to-br dark:from-white/[0.04] dark:to-white/[0.02] dark:shadow-[0_16px_40px_rgba(2,6,23,0.35)] md:grid-cols-2 md:p-10">
-        <div className="space-y-4 text-slate-600 transition-colors duration-300 dark:text-slate-300">
+      <h2 className="mt-2 text-[clamp(28px,5vw,48px)] font-semibold text-slate-900 transition-colors duration-300 dark:text-white">Mission-driven product team for sustainability outcomes.</h2>
+      <motion.div {...fadeInUp} className="mt-6 grid gap-5 rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_16px_36px_rgba(148,163,184,0.22)] transition-colors duration-300 dark:border-white/10 dark:bg-gradient-to-br dark:from-white/[0.04] dark:to-white/[0.02] dark:shadow-[0_16px_40px_rgba(2,6,23,0.35)] md:grid-cols-2 md:p-10">
+        <div className="space-y-4 text-[clamp(14px,2vw,18px)] text-slate-600 transition-colors duration-300 dark:text-slate-300">
           <p>
             SustainableSolution360 helps governments, enterprises, and NGOs modernize sustainability and resilience operations without introducing complexity.
           </p>
