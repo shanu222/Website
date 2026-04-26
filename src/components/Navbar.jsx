@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Moon, Sun, X } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const navItems = [
   { path: "/", label: "Home" },
@@ -14,9 +14,13 @@ function Navbar({ menuOpen, setMenuOpen, onNavigate, theme, onToggleTheme }) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/65">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-3">
-        <button onClick={() => onNavigate("/")} className="text-lg font-semibold tracking-tight text-slate-900 transition-colors duration-300 dark:text-white">
-          SustainableSolution360
-        </button>
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-lg font-semibold tracking-tight text-slate-900 transition duration-200 hover:scale-105 hover:opacity-80 dark:text-white"
+        >
+          <img src="/assets/logo.png" alt="SustainableSolution360 Logo" className="h-7 w-7 object-contain sm:h-8 sm:w-8" />
+          <span>SustainableSolution360</span>
+        </Link>
         <nav className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
             <NavLink
