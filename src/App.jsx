@@ -72,7 +72,7 @@ const productCards = [
 
 const testimonials = [
   {
-    quote: "Solution360 helped us turn fragmented sustainability operations into a single executive dashboard.",
+    quote: "SustainableSolution360 helped us turn fragmented sustainability operations into a single executive dashboard.",
     author: "Director of Operations, Regional Energy Group",
   },
   {
@@ -137,7 +137,7 @@ function App() {
     setIsSubmitting(false);
     setSubmitMessage("Thanks. Your message is ready - sending through your email app.");
 
-    const subject = encodeURIComponent("Website Inquiry - Solution360");
+    const subject = encodeURIComponent("Website Inquiry - SustainableSolution360");
     const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
     window.location.href = `mailto:shanu1998end@gmail.com?subject=${subject}&body=${body}`;
 
@@ -245,7 +245,7 @@ function App() {
             >
               <img
                 src={heroImage}
-                alt="Dashboard preview of Solution360 platform"
+                alt="Dashboard preview of SustainableSolution360 platform"
                 className="w-full rounded-2xl object-cover"
                 loading="eager"
               />
@@ -257,7 +257,7 @@ function App() {
         <motion.section {...fadeInUp} style={{ y: sectionY }} className="grid gap-8 rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-white/[0.02] p-6 shadow-[0_16px_40px_rgba(2,6,23,0.35)] md:grid-cols-2 md:p-10">
           <div className="space-y-4 text-slate-300">
             <p>
-              Solution360 helps governments, enterprises, and NGOs modernize sustainability and resilience operations
+              SustainableSolution360 helps governments, enterprises, and NGOs modernize sustainability and resilience operations
               without introducing complexity.
             </p>
             <p>
@@ -564,7 +564,7 @@ function App() {
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/70 to-transparent" />
         <div className="mx-auto grid max-w-6xl gap-8 px-4 py-8 text-sm sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
           <div>
-            <p className="text-base font-semibold text-white">Solution360</p>
+            <p className="text-base font-semibold text-white">SustainableSolution360</p>
             <p className="mt-2 text-slate-400">Premium climate-tech products designed for growth.</p>
           </div>
           <div>
@@ -591,7 +591,7 @@ function App() {
           </div>
         </div>
         <div className="mx-auto max-w-6xl px-4 pb-6 text-xs text-slate-500 sm:px-6 lg:px-8">
-          © {year} Solution360. All rights reserved.
+          © {year} SustainableSolution360. All rights reserved.
         </div>
       </footer>
     </div>
@@ -603,7 +603,7 @@ function Navbar({ menuOpen, setMenuOpen, onNavigate }) {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/65 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <button onClick={() => onNavigate("top")} className="text-lg font-semibold tracking-tight text-white">
-          Solution360
+          SustainableSolution360
         </button>
         <nav className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (

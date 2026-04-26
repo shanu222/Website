@@ -1,9 +1,9 @@
 {
-  "name": "solution360-website",
+  "name": "sustainablesolution360-website",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Static startup portfolio website for Solution360.",
+  "description": "Static startup portfolio website for SustainableSolution360.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

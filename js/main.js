@@ -75,7 +75,7 @@ if (form && statusText) {
       sendButton.textContent = "Preparing Message...";
     }
 
-    const subject = encodeURIComponent("Website Inquiry - Solution360");
+    const subject = encodeURIComponent("Website Inquiry - SustainableSolution360");
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     );

@@ -1,11 +1,11 @@
 
-# Solution360 Website
+# SustainableSolution360 Website
 
-Professional startup portfolio website for presenting Solution360's climate, energy, and sustainability technology vision to investors, partners, and early customers.
+Professional startup portfolio website for presenting SustainableSolution360's climate, energy, and sustainability technology vision to investors, partners, and early customers.
 
 ## Project Overview
 
-This repository contains a clean, production-ready static frontend for the Solution360 website.
+This repository contains a clean, production-ready static frontend for the SustainableSolution360 website.
 It is intentionally framework-light (HTML, CSS, JavaScript) so it can be quickly demoed, hosted, and iterated.
 
 ## Purpose
