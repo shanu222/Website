@@ -49,7 +49,8 @@ function App() {
             <Routes location={location}>
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<Products />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/who-we-are" element={<About />} />
+              <Route path="/about" element={<Navigate to="/who-we-are" replace />} />
               <Route path="/how-it-works" element={<HowItWorksPage />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<Navigate to="/" replace />} />
