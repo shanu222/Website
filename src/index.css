@@ -21,10 +21,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  .background-video-element {
-    display: none;
-  }
-
   body {
     background: linear-gradient(to bottom, #0f172a, #1e293b);
   }
