@@ -11,16 +11,25 @@ const liveProducts = [
       "AI-powered preparation platform for civil service aspirants, improving access to quality education and career opportunities.",
   },
   {
-    name: "NET360 Preparation",
-    href: "https://www.net360preparation.com/",
-    sdg: "SDG 4",
-    description: "Smart learning platform for NUST entry test preparation with structured content and performance tracking.",
-  },
-  {
     name: "Resilience360",
     href: "https://resilience360-production.up.railway.app/",
     sdg: "SDGs 9, 11, 13",
+    isFeatured: true,
     description: "Infrastructure resilience platform for retrofit planning, cost estimation, and climate risk reduction.",
+  },
+  {
+    name: "Green Building Portal",
+    href: "https://iapd.online/",
+    sdg: "SDGs 11, 12",
+    isFeatured: true,
+    description: "Platform for green building standards, compliance, and sustainable construction practices.",
+  },
+  {
+    name: "Structural Health Monitoring",
+    href: "https://shm-7701wacs7-shanu1998end-afks-projects.vercel.app/",
+    sdg: "SDGs 9, 11",
+    isFeatured: true,
+    description: "Real-time monitoring of infrastructure health to ensure safety and long-term resilience.",
   },
   {
     name: "NDMA Dashboard",
@@ -35,22 +44,16 @@ const liveProducts = [
     description: "Intercity ride-sharing platform reducing emissions and promoting sustainable transportation.",
   },
   {
-    name: "Structural Health Monitoring",
-    href: "https://shm-7701wacs7-shanu1998end-afks-projects.vercel.app/",
-    sdg: "SDGs 9, 11",
-    description: "Real-time monitoring of infrastructure health to ensure safety and long-term resilience.",
-  },
-  {
     name: "Stakeholder Inventory Portal",
     href: "https://stakeholder-inventory-portal.vercel.app/",
     sdg: "SDGs 9, 16",
     description: "Centralized system for managing stakeholders and resources to improve coordination and transparency.",
   },
   {
-    name: "Green Building Portal",
-    href: "https://iapd.online/",
-    sdg: "SDGs 11, 12",
-    description: "Platform for green building standards, compliance, and sustainable construction practices.",
+    name: "NET360 Preparation",
+    href: "https://www.net360preparation.com/",
+    sdg: "SDG 4",
+    description: "Smart learning platform for NUST entry test preparation with structured content and performance tracking.",
   },
   {
     name: "Virtual Hairstyle Try-On",
@@ -169,7 +172,11 @@ function ProductsSection() {
                 key={product.name}
                 whileHover={{ y: -6, scale: 1.01 }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-colors duration-300 hover:border-cyan-400 hover:shadow-[0_14px_35px_rgba(6,182,212,0.16)] dark:border-slate-700 dark:bg-slate-800 dark:hover:border-cyan-300/60 dark:hover:shadow-glow"
+                className={`group relative overflow-hidden rounded-2xl border bg-white p-6 transition-colors duration-300 dark:bg-slate-800 ${
+                  product.isFeatured && activeTab === "live"
+                    ? "border-cyan-300 shadow-[0_14px_35px_rgba(6,182,212,0.18)] dark:border-cyan-300/60 dark:shadow-glow"
+                    : "border-slate-200 shadow-sm hover:border-cyan-400 hover:shadow-[0_14px_35px_rgba(6,182,212,0.16)] dark:border-slate-700 dark:hover:border-cyan-300/60 dark:hover:shadow-glow"
+                }`}
               >
                 <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-blue-400 via-cyan-300 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
                 <div className="flex flex-wrap items-center gap-2">
@@ -182,6 +189,11 @@ function ProductsSection() {
                   >
                     {activeTab === "live" ? "LIVE" : "COMING SOON"}
                   </span>
+                  {product.isFeatured && activeTab === "live" && (
+                    <span className="rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-blue-700 dark:border-blue-300/30 dark:bg-blue-400/10 dark:text-blue-200">
+                      Featured
+                    </span>
+                  )}
                 </div>
 
                 <h3 className="mt-4 text-xl font-semibold text-slate-900 transition-colors duration-300 dark:text-white">
