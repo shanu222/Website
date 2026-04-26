@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import BackgroundVideo from "./components/BackgroundVideo";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import useTheme from "./hooks/useTheme";
@@ -36,7 +37,7 @@ function App() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white text-gray-900 transition-colors duration-300 dark:bg-slate-900 dark:text-gray-100">
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(147,197,253,0.35),transparent_42%),radial-gradient(circle_at_82%_10%,rgba(186,230,253,0.24),transparent_34%),linear-gradient(180deg,#f8fbff_0%,#eff6ff_55%,#ffffff_100%)] transition-colors duration-300 dark:bg-[radial-gradient(circle_at_15%_20%,rgba(37,99,235,0.32),transparent_36%),radial-gradient(circle_at_82%_10%,rgba(8,145,178,0.24),transparent_34%),linear-gradient(180deg,#020617_0%,#0b1120_50%,#020617_100%)]" />
+      <BackgroundVideo />
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} onNavigate={routeTo} theme={theme} onToggleTheme={toggleTheme} />
 
       <main className="w-full pb-16 pt-20">
